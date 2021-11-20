@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Yochen Chang" />
+    <meta name="robots" content="follow, index" />
+    <meta name="description" content="" />
+    <!-- Logo -->
+    <link rel="shortcut icon" href="./materials/icon/chess-game.png" />
+    <link rel="bookmark" href="" />
+    <!-- My CSS -->
+    <link rel="stylesheet" href="./styles/style.css" />
+    <title>Klotski 華容道</title>
+  </head>
+  <body>
+    <!-- NavBar -->
+    <nav>
+      <ul class="flexCCRow" style="justify-content: space-between">
+        <li class="flexCCRow">
+          <div class="imgArea">
+            <img src="./materials/icon/chess-game.png" alt="" />
+          </div>
+          <h1 id="gameName">Klotski 華容道</h1>
+        </li>
+        <button id="introBtn">Introduction</button>
+      </ul>
+    </nav>
+    <div id="masking" class="hidden"></div>
+    <div id="gameIntroduction" class="flexCCCol hidden">
+      <div id="crossBox">
+        <div class="line"></div>
+      </div>
+      <h1>Klotski 華容道</h1>
+      <div class="content">
+        <div class="imgArea flexCCRow">
+          <img src="./materials/klotski-original.jpg" alt="" />
+          <img src="./materials/klotski-china.jpg" alt="" />
+        </div>
+        <article>
+          華容道（英語：Klotski，來自波蘭文的klocki，意為木塊）是一種滑塊類遊戲，由放在方形盤中的10塊方片拼成，<strong>目標是在只滑動方塊而不從棋盤中拿走的情況下，將最大的一塊移到底部出口</strong>。
+          <br />
+          華容道最早起源於19世紀末20世紀初的波蘭，而現在的最常見的4個1✖1、
+          5個1✖2以及一個2✖2的這種搭配是由英國人John Harold Fleming
+          在1932年發明並申請的專利。
+          <br />
+          而到了20世紀70-80年代
+          三國版的華容道突然在中國流行，然後本土化加上三國背景讓很多人誤以為是中國傳統遊戲。
+        </article>
+      </div>
+    </div>
+    <!-- GameArea -->
+    <div id="chessboard" class="flexCCCol">
+      <ul class="chessRow flexCCRow">
+        <li class="fixed"></li>
+        <li class="fixed"></li>
+        <li class="fixed"></li>
+        <li class="fixed"></li>
+        <li class="fixed"></li>
+        <li class="fixed"></li>
+      </ul>
+      <ul class="chessRow flexCCRow">
+        <li class="fixed"></li>
+        <li class="chessBlock unselect"><div class="chessInner"></div></li>
+        <li class="chessBlock unselect"><div class="chessInner"></div></li>
+        <li class="chessBlock unselect"><div class="chessInner"></div></li>
+        <li class="chessBlock unselect"><div class="chessInner"></div></li>
+        <li class="fixed"></li>
+      </ul>
+      <ul class="chessRow flexCCRow">
+        <li class="fixed"></li>
+        <li class="chessBlock unselect"><div class="chessInner"></div></li>
+        <li class="chessBlock unselect"><div class="chessInner"></div></li>
+        <li class="chessBlock unselect"><div class="chessInner"></div></li>
+        <li class="chessBlock unselect"><div class="chessInner"></div></li>
+        <li class="fixed"></li>
+      </ul>
+      <ul class="chessRow flexCCRow">
+        <li class="fixed"></li>
+        <li class="chessBlock unselect"><div class="chessInner"></div></li>
+        <li class="chessBlock unselect"><div class="chessInner"></div></li>
+        <li class="chessBlock unselect"><div class="chessInner"></div></li>
+        <li class="chessBlock unselect"><div class="chessInner"></div></li>
+        <li class="fixed"></li>
+      </ul>
+      <ul class="chessRow flexCCRow">
+        <li class="fixed"></li>
+        <li class="chessBlock unselect"><div class="chessInner"></div></li>
+        <li class="chessBlock unselect"><div class="chessInner"></div></li>
+        <li class="chessBlock unselect"><div class="chessInner"></div></li>
+        <li class="chessBlock unselect"><div class="chessInner"></div></li>
+        <li class="fixed"></li>
+      </ul>
+      <ul class="chessRow flexCCRow">
+        <li class="fixed"></li>
+        <li class="chessBlock unselect"><div class="chessInner"></div></li>
+        <li class="chessBlock unselect"><div class="chessInner"></div></li>
+        <li class="chessBlock unselect"><div class="chessInner"></div></li>
+        <li class="chessBlock unselect"><div class="chessInner"></div></li>
+        <li class="fixed"></li>
+      </ul>
+      <ul class="chessRow flexCCRow">
+        <li class="fixed"></li>
+        <li class="fixed"></li>
+        <li class="exit"></li>
+        <li class="exit"></li>
+        <li class="fixed"></li>
+        <li class="fixed"></li>
+      </ul>
+    </div>
+    <div id="floatingBlock"></div>
+
+    <div id="controlBtns" class="flexCCCol">
+      <button id="topBtn">
+        <img src="./materials/icon/arrow_upward_black_24dp.svg" alt="" />
+      </button>
+      <div class="flexCCRow">
+        <button id="leftBtn">
+          <img src="./materials/icon/arrow_back_black_24dp.svg" alt="" />
+        </button>
+        <button id="bottomBtn">
+          <img src="./materials/icon/arrow_downward_black_24dp.svg" alt="" />
+        </button>
+        <button id="rightBtn">
+          <img src="./materials/icon/arrow_forward_black_24dp.svg" alt="" />
+        </button>
+      </div>
+    </div>
+    <h1 id="chessMoved">Move your chess.</h1>
+    <div id="resetBtn" class="flexCCRow">
+      <button>RESET</button>
+    </div>
+  </body>
+  <script src="/app.js"></script>
+</html>

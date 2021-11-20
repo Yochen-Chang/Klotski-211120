@@ -1,0 +1,306 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  // border: 1px solid black;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+  font-size: 1rem;
+  text-align: center;
+}
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+img {
+  max-width: 100%;
+  // max-height: 100%;
+}
+.flexCCRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.flexCCCol {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.unselect {
+  .chessInner {
+    opacity: 0.5;
+  }
+}
+.hidden {
+  display: none;
+}
+
+// variable setting
+$color-chessboard-free: #fefae0;
+$color-chessboard-fixed: #64302b;
+$color-chess-1x1: #38c23f;
+$color-chess-2x1: #d62828;
+$color-chess-1x2: #f77f00;
+$color-chess-2x2: #003049;
+$size-chess-sd: 2rem;
+$size-chess: 4rem;
+
+// NavBar Setting
+nav {
+  position: sticky;
+  z-index: 10;
+  top: 0;
+  ul {
+    background-color: $color-chessboard-free;
+    li {
+      margin: 0.5rem 1rem;
+      #gameName {
+        margin-left: 0.5rem;
+        @media (max-width: 450px) {
+          display: none;
+        }
+      }
+    }
+  }
+  .imgArea {
+    width: $size-chess-sd;
+  }
+  button {
+    padding: 0.5rem;
+    margin: 0 0.5rem;
+    background-color: $color-chess-2x2;
+    border-radius: 0.5rem;
+    color: $color-chessboard-free;
+  }
+}
+// Game introduction setting
+#masking {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  z-index: 15;
+}
+#crossBox {
+  position: absolute;
+  right: 2rem;
+  top: 2rem;
+  opacity: 0.5;
+  @media (max-width: 450px) {
+    right: 0.8rem;
+    top: 1.2rem;
+  }
+  &:hover {
+    transform: translate(2px, -2px);
+    transition: all 0.5s ease;
+    opacity: 1;
+  }
+  .line {
+    width: 2rem;
+    height: 2px;
+    background-color: black;
+    display: block;
+    transform: rotate(45deg);
+    &::after {
+      content: "";
+      width: 2rem;
+      height: 2px;
+      background-color: black;
+      display: block;
+      transform: rotate(90deg);
+    }
+  }
+}
+#gameIntroduction {
+  width: 80vw;
+  height: 80vh;
+  position: fixed;
+  top: 10vh;
+  left: 10vw;
+  z-index: 20;
+  background-color: $color-chessboard-free;
+  border: $color-chessboard-fixed 1px solid;
+  border-radius: 1rem;
+  padding: 2rem;
+  h1 {
+    margin: 1rem 0;
+    font-size: 1.5rem;
+  }
+  @media (max-width: 450px) {
+    padding: 0.5rem;
+    h1 {
+      font-size: 1.2rem;
+    }
+  }
+  .content {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding: 0.5rem;
+    max-width: 800px;
+    line-height: 1.5rem;
+    scrollbar-color: black;
+    @media (max-width: 450px) {
+      font-size: 0.8rem;
+    }
+    .imgArea {
+      flex-wrap: wrap;
+      img {
+        background-color: white;
+        padding: 0.2rem;
+        margin: 0.3rem;
+      }
+    }
+  }
+}
+
+// Reset button setting
+#resetBtn {
+  button {
+    border-radius: 0.5rem;
+    background-color: $color-chess-2x1;
+    color: $color-chessboard-free;
+  }
+}
+// GameArea Setting
+#chessboard {
+  margin: 2rem auto;
+}
+.chessRow {
+  height: $size-chess;
+  @media (max-width: 450px) {
+    height: $size-chess-sd;
+  }
+}
+.chessBlock {
+  width: $size-chess;
+  height: $size-chess;
+  background-color: $color-chessboard-free;
+  @media (max-width: 450px) {
+    height: $size-chess-sd;
+    width: $size-chess-sd;
+  }
+}
+.fixed {
+  width: $size-chess;
+  height: $size-chess;
+  background-color: $color-chessboard-fixed;
+  @media (max-width: 450px) {
+    height: $size-chess-sd;
+    width: $size-chess-sd;
+  }
+}
+.exit {
+  width: $size-chess;
+  height: $size-chess;
+  background-color: $color-chessboard-free;
+  @media (max-width: 450px) {
+    height: $size-chess-sd;
+    width: $size-chess-sd;
+  }
+}
+
+#controlBtns {
+  button {
+    padding: 0.5rem 1rem;
+    margin: 0.3rem;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+#resetBtn {
+  button {
+    margin: 0.5rem auto;
+    padding: 0.5rem 1rem;
+    img {
+      height: $size-chess;
+    }
+  }
+}
+
+#floatingBlock {
+  position: absolute;
+  .chessBlock {
+    background-color: transparent;
+  }
+}
+
+.chessBlock {
+  width: $size-chess;
+  height: $size-chess;
+  @media (max-width: 450px) {
+    height: $size-chess-sd;
+    width: $size-chess-sd;
+  }
+  padding: 0.2rem;
+  &.block2x1L {
+    padding-right: 0;
+  }
+  &.block2x1R {
+    padding-left: 0;
+  }
+  &.block1x2T {
+    padding-bottom: 0;
+  }
+  &.block1x2B {
+    padding-top: 0;
+  }
+  &.block2x2TL {
+    padding-bottom: 0;
+    padding-right: 0;
+  }
+  &.block2x2TR {
+    padding-bottom: 0;
+    padding-left: 0;
+  }
+  &.block2x2BL {
+    padding-top: 0;
+    padding-right: 0;
+  }
+  &.block2x2BR {
+    padding-top: 0;
+    padding-left: 0;
+  }
+  .chessInner {
+    width: 100%;
+    height: 100%;
+    background-color: $color-chessboard-free;
+    &.block1x1 {
+      background-color: $color-chess-1x1;
+    }
+    &.block2x1L {
+      background-color: $color-chess-2x1;
+    }
+    &.block2x1R {
+      background-color: $color-chess-2x1;
+    }
+    &.block1x2T {
+      background-color: $color-chess-1x2;
+    }
+    &.block1x2B {
+      background-color: $color-chess-1x2;
+    }
+    &.block2x2TL {
+      background-color: $color-chess-2x2;
+    }
+    &.block2x2TR {
+      background-color: $color-chess-2x2;
+    }
+    &.block2x2BL {
+      background-color: $color-chess-2x2;
+    }
+    &.block2x2BR {
+      background-color: $color-chess-2x2;
+    }
+  }
+}

@@ -1,0 +1,384 @@
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+  font-size: 1rem;
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+.flexCCRow {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.flexCCCol {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.unselect .chessInner {
+  opacity: 0.5;
+}
+
+.hidden {
+  display: none;
+}
+
+nav {
+  position: -webkit-sticky;
+  position: sticky;
+  z-index: 10;
+  top: 0;
+}
+
+nav ul {
+  background-color: #fefae0;
+}
+
+nav ul li {
+  margin: 0.5rem 1rem;
+}
+
+nav ul li #gameName {
+  margin-left: 0.5rem;
+}
+
+@media (max-width: 450px) {
+  nav ul li #gameName {
+    display: none;
+  }
+}
+
+nav .imgArea {
+  width: 2rem;
+}
+
+nav button {
+  padding: 0.5rem;
+  margin: 0 0.5rem;
+  background-color: #003049;
+  border-radius: 0.5rem;
+  color: #fefae0;
+}
+
+#masking {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  z-index: 15;
+}
+
+#crossBox {
+  position: absolute;
+  right: 2rem;
+  top: 2rem;
+  opacity: 0.5;
+}
+
+@media (max-width: 450px) {
+  #crossBox {
+    right: 0.8rem;
+    top: 1.2rem;
+  }
+}
+
+#crossBox:hover {
+  -webkit-transform: translate(2px, -2px);
+          transform: translate(2px, -2px);
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  opacity: 1;
+}
+
+#crossBox .line {
+  width: 2rem;
+  height: 2px;
+  background-color: black;
+  display: block;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+#crossBox .line::after {
+  content: "";
+  width: 2rem;
+  height: 2px;
+  background-color: black;
+  display: block;
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+#gameIntroduction {
+  width: 80vw;
+  height: 80vh;
+  position: fixed;
+  top: 10vh;
+  left: 10vw;
+  z-index: 20;
+  background-color: #fefae0;
+  border: #64302b 1px solid;
+  border-radius: 1rem;
+  padding: 2rem;
+}
+
+#gameIntroduction h1 {
+  margin: 1rem 0;
+  font-size: 1.5rem;
+}
+
+@media (max-width: 450px) {
+  #gameIntroduction {
+    padding: 0.5rem;
+  }
+  #gameIntroduction h1 {
+    font-size: 1.2rem;
+  }
+}
+
+#gameIntroduction .content {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding: 0.5rem;
+  max-width: 800px;
+  line-height: 1.5rem;
+  scrollbar-color: black;
+}
+
+@media (max-width: 450px) {
+  #gameIntroduction .content {
+    font-size: 0.8rem;
+  }
+}
+
+#gameIntroduction .content .imgArea {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+#gameIntroduction .content .imgArea img {
+  background-color: white;
+  padding: 0.2rem;
+  margin: 0.3rem;
+}
+
+#resetBtn button {
+  border-radius: 0.5rem;
+  background-color: #d62828;
+  color: #fefae0;
+}
+
+#chessboard {
+  margin: 2rem auto;
+}
+
+.chessRow {
+  height: 4rem;
+}
+
+@media (max-width: 450px) {
+  .chessRow {
+    height: 2rem;
+  }
+}
+
+.chessBlock {
+  width: 4rem;
+  height: 4rem;
+  background-color: #fefae0;
+}
+
+@media (max-width: 450px) {
+  .chessBlock {
+    height: 2rem;
+    width: 2rem;
+  }
+}
+
+.fixed {
+  width: 4rem;
+  height: 4rem;
+  background-color: #64302b;
+}
+
+@media (max-width: 450px) {
+  .fixed {
+    height: 2rem;
+    width: 2rem;
+  }
+}
+
+.exit {
+  width: 4rem;
+  height: 4rem;
+  background-color: #fefae0;
+}
+
+@media (max-width: 450px) {
+  .exit {
+    height: 2rem;
+    width: 2rem;
+  }
+}
+
+#controlBtns button {
+  padding: 0.5rem 1rem;
+  margin: 0.3rem;
+}
+
+#controlBtns button img {
+  width: 100%;
+  height: 100%;
+}
+
+#resetBtn button {
+  margin: 0.5rem auto;
+  padding: 0.5rem 1rem;
+}
+
+#resetBtn button img {
+  height: 4rem;
+}
+
+#floatingBlock {
+  position: absolute;
+}
+
+#floatingBlock .chessBlock {
+  background-color: transparent;
+}
+
+.chessBlock {
+  width: 4rem;
+  height: 4rem;
+  padding: 0.2rem;
+}
+
+@media (max-width: 450px) {
+  .chessBlock {
+    height: 2rem;
+    width: 2rem;
+  }
+}
+
+.chessBlock.block2x1L {
+  padding-right: 0;
+}
+
+.chessBlock.block2x1R {
+  padding-left: 0;
+}
+
+.chessBlock.block1x2T {
+  padding-bottom: 0;
+}
+
+.chessBlock.block1x2B {
+  padding-top: 0;
+}
+
+.chessBlock.block2x2TL {
+  padding-bottom: 0;
+  padding-right: 0;
+}
+
+.chessBlock.block2x2TR {
+  padding-bottom: 0;
+  padding-left: 0;
+}
+
+.chessBlock.block2x2BL {
+  padding-top: 0;
+  padding-right: 0;
+}
+
+.chessBlock.block2x2BR {
+  padding-top: 0;
+  padding-left: 0;
+}
+
+.chessBlock .chessInner {
+  width: 100%;
+  height: 100%;
+  background-color: #fefae0;
+}
+
+.chessBlock .chessInner.block1x1 {
+  background-color: #38c23f;
+}
+
+.chessBlock .chessInner.block2x1L {
+  background-color: #d62828;
+}
+
+.chessBlock .chessInner.block2x1R {
+  background-color: #d62828;
+}
+
+.chessBlock .chessInner.block1x2T {
+  background-color: #f77f00;
+}
+
+.chessBlock .chessInner.block1x2B {
+  background-color: #f77f00;
+}
+
+.chessBlock .chessInner.block2x2TL {
+  background-color: #003049;
+}
+
+.chessBlock .chessInner.block2x2TR {
+  background-color: #003049;
+}
+
+.chessBlock .chessInner.block2x2BL {
+  background-color: #003049;
+}
+
+.chessBlock .chessInner.block2x2BR {
+  background-color: #003049;
+}
+/*# sourceMappingURL=style.css.map */
