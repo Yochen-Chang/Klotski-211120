@@ -37,7 +37,7 @@ img {
 }
 .unselect {
   .chessInner {
-    opacity: 0.5;
+    opacity: 0.7;
   }
 }
 .hidden {
@@ -45,6 +45,11 @@ img {
 }
 
 // variable setting
+$material-fixed: url("../materials/img/brick.png");
+$material-21: url("../materials/img/wood21.png");
+$material-12: url("../materials/img/wood12.png");
+$material-11: url("../materials/img/wood11.png");
+$material-22: url("../materials/img/metal22.png");
 $color-chessboard-free: #fefae0;
 $color-chessboard-fixed: #64302b;
 $color-chess-1x1: #38c23f;
@@ -53,6 +58,7 @@ $color-chess-1x2: #f77f00;
 $color-chess-2x2: #003049;
 $size-chess-sd: 2rem;
 $size-chess: 4rem;
+$chess-radius: 0.3rem;
 
 // NavBar Setting
 nav {
@@ -192,7 +198,9 @@ nav {
 .fixed {
   width: $size-chess;
   height: $size-chess;
-  background-color: $color-chessboard-fixed;
+  background-image: $material-fixed;
+  background-size: cover;
+  padding: 0.5rem;
   @media (max-width: 450px) {
     height: $size-chess-sd;
     width: $size-chess-sd;
@@ -275,32 +283,55 @@ nav {
     width: 100%;
     height: 100%;
     background-color: $color-chessboard-free;
+    background-size: cover;
     &.block1x1 {
-      background-color: $color-chess-1x1;
+      // background-color: $color-chess-1x1;
+      background-image: $material-11;
+      border-radius: $chess-radius;
     }
     &.block2x1L {
-      background-color: $color-chess-2x1;
+      // background-color: $color-chess-2x1;
+      background-image: $material-21;
+      border-top-left-radius: $chess-radius;
+      border-bottom-left-radius: $chess-radius;
     }
     &.block2x1R {
-      background-color: $color-chess-2x1;
+      // background-color: $color-chess-2x1;
+      background-image: $material-21;
+      border-top-right-radius: $chess-radius;
+      border-bottom-right-radius: $chess-radius;
     }
     &.block1x2T {
-      background-color: $color-chess-1x2;
+      // background-color: $color-chess-1x2;
+      background-image: $material-12;
+      border-top-right-radius: $chess-radius;
+      border-top-left-radius: $chess-radius;
     }
     &.block1x2B {
-      background-color: $color-chess-1x2;
+      // background-color: $color-chess-1x2;
+      background-image: $material-12;
+      border-bottom-left-radius: $chess-radius;
+      border-bottom-right-radius: $chess-radius;
     }
     &.block2x2TL {
-      background-color: $color-chess-2x2;
+      // background-color: $color-chess-2x2;
+      background-image: $material-22;
+      border-top-left-radius: $chess-radius;
     }
     &.block2x2TR {
-      background-color: $color-chess-2x2;
+      // background-color: $color-chess-2x2;
+      background-image: $material-22;
+      border-top-right-radius: $chess-radius;
     }
     &.block2x2BL {
-      background-color: $color-chess-2x2;
+      // background-color: $color-chess-2x2;
+      background-image: $material-22;
+      border-bottom-left-radius: $chess-radius;
     }
     &.block2x2BR {
-      background-color: $color-chess-2x2;
+      // background-color: $color-chess-2x2;
+      background-image: $material-22;
+      border-bottom-right-radius: $chess-radius;
     }
   }
 }
