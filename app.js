@@ -90,7 +90,10 @@ window.addEventListener("keydown", (target) => {
 let resetBtn = document.querySelector("#resetBtn");
 "click touchstart".split(" ").forEach((e) => {
   resetBtn.addEventListener(e, () => {
-    location.reload();
+    let typing = prompt("Type RELOAD to reload");
+    if (typing == "RELOAD") {
+      location.reload();
+    }
   });
 });
 
