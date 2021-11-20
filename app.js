@@ -64,6 +64,10 @@ for (let i = 0; i < btnArray.length; i++) {
   btnArray[i].addEventListener("click", () => {
     moving(directionArray[i]);
   });
+  btnArray[i].addEventListener("touchstart", (target) => {
+    target.preventDefault();
+    moving(directionArray[i]);
+  });
 }
 // Chess moving by keyboard
 window.addEventListener("keydown", (target) => {
