@@ -303,6 +303,7 @@ nav button {
   .chessBlock {
     height: 2rem;
     width: 2rem;
+    padding: 0.1rem;
   }
 }
 

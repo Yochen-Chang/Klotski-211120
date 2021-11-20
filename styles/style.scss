@@ -246,11 +246,12 @@ nav {
 .chessBlock {
   width: $size-chess;
   height: $size-chess;
+  padding: 0.2rem;
   @media (max-width: 450px) {
     height: $size-chess-sd;
     width: $size-chess-sd;
+    padding: 0.1rem;
   }
-  padding: 0.2rem;
   &.block2x1L {
     padding-right: 0;
   }
