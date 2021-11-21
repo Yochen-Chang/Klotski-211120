@@ -59,7 +59,7 @@ img {
 }
 
 .unselect .chessInner {
-  opacity: 0.7;
+  opacity: 0.5;
 }
 
 .hidden {
@@ -185,7 +185,6 @@ nav button {
   padding: 0.5rem;
   max-width: 800px;
   line-height: 1.5rem;
-  scrollbar-color: black;
 }
 
 @media (max-width: 450px) {
@@ -211,8 +210,51 @@ nav button {
   color: #fefae0;
 }
 
+#materialBtn {
+  width: 2rem;
+  height: 4rem;
+  padding: 2px;
+  background-color: #fefae0;
+  border: #003049 4px solid;
+  border-radius: 0.5rem;
+  position: absolute;
+  top: 5rem;
+  right: 2rem;
+  opacity: 0.8;
+}
+
+@media (max-width: 450px) {
+  #materialBtn {
+    right: 1rem;
+    width: 1.5rem;
+    height: 3rem;
+    border-radius: 0.3rem;
+    border: #003049 2px solid;
+  }
+}
+
+#materialBtn #color {
+  width: 100%;
+  height: 50%;
+  background-color: #003049;
+  opacity: 0.8;
+  border-radius: 3px;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+#materialBtn #color.active {
+  -webkit-transform: translate(0, 100%);
+          transform: translate(0, 100%);
+}
+
+#materialBtn img {
+  position: relative;
+  top: 2.5rem;
+}
+
 #chessboard {
-  margin: 2rem auto;
+  margin: 2rem 0;
 }
 
 .chessRow {
@@ -276,13 +318,11 @@ nav button {
   height: 100%;
 }
 
-#resetBtn button {
+#resetBtn {
   margin: 0.5rem auto;
   padding: 0.5rem 1rem;
-}
-
-#resetBtn button img {
-  height: 4rem;
+  border-radius: 0.3rem;
+  background-color: #d62828;
 }
 
 #floatingBlock {
@@ -351,51 +391,107 @@ nav button {
 }
 
 .chessBlock .chessInner.block1x1 {
-  background-image: url("../materials/img/wood11.png");
+  background-color: #38c23f;
   border-radius: 0.3rem;
 }
 
 .chessBlock .chessInner.block2x1L {
-  background-image: url("../materials/img/wood21.png");
+  background-color: #d62828;
   border-top-left-radius: 0.3rem;
   border-bottom-left-radius: 0.3rem;
 }
 
 .chessBlock .chessInner.block2x1R {
-  background-image: url("../materials/img/wood21.png");
+  background-color: #d62828;
   border-top-right-radius: 0.3rem;
   border-bottom-right-radius: 0.3rem;
 }
 
 .chessBlock .chessInner.block1x2T {
-  background-image: url("../materials/img/wood12.png");
+  background-color: #f77f00;
   border-top-right-radius: 0.3rem;
   border-top-left-radius: 0.3rem;
 }
 
 .chessBlock .chessInner.block1x2B {
-  background-image: url("../materials/img/wood12.png");
+  background-color: #f77f00;
   border-bottom-left-radius: 0.3rem;
   border-bottom-right-radius: 0.3rem;
 }
 
 .chessBlock .chessInner.block2x2TL {
-  background-image: url("../materials/img/metal22.png");
+  background-color: #003049;
   border-top-left-radius: 0.3rem;
 }
 
 .chessBlock .chessInner.block2x2TR {
-  background-image: url("../materials/img/metal22.png");
+  background-color: #003049;
   border-top-right-radius: 0.3rem;
 }
 
 .chessBlock .chessInner.block2x2BL {
-  background-image: url("../materials/img/metal22.png");
+  background-color: #003049;
   border-bottom-left-radius: 0.3rem;
 }
 
 .chessBlock .chessInner.block2x2BR {
-  background-image: url("../materials/img/metal22.png");
+  background-color: #003049;
   border-bottom-right-radius: 0.3rem;
+}
+
+.chessBlock.material .chessInner {
+  width: 100%;
+  height: 100%;
+  background-color: #fefae0;
+  background-size: cover;
+}
+
+.chessBlock.material .chessInner.block1x1 {
+  background-image: url("../materials/img/wood11.png");
+  border-radius: 0.3rem;
+}
+
+.chessBlock.material .chessInner.block2x1L {
+  background-image: url("../materials/img/wood21.png");
+  border-top-left-radius: 0.3rem;
+  border-bottom-left-radius: 0.3rem;
+}
+
+.chessBlock.material .chessInner.block2x1R {
+  background-image: url("../materials/img/wood21.png");
+  border-top-right-radius: 0.3rem;
+  border-bottom-right-radius: 0.3rem;
+}
+
+.chessBlock.material .chessInner.block1x2T {
+  background-image: url("../materials/img/wood12.png");
+  border-top-right-radius: 0.3rem;
+  border-top-left-radius: 0.3rem;
+}
+
+.chessBlock.material .chessInner.block1x2B {
+  background-image: url("../materials/img/wood12.png");
+  border-bottom-left-radius: 0.3rem;
+  border-bottom-right-radius: 0.3rem;
+}
+
+.chessBlock.material .chessInner.block2x2TL {
+  background-color: #003049;
+  background-image: url("../materials/img/metal22.png");
+}
+
+.chessBlock.material .chessInner.block2x2TR {
+  background-color: #003049;
+  background-image: url("../materials/img/metal22.png");
+}
+
+.chessBlock.material .chessInner.block2x2BL {
+  background-color: #003049;
+  background-image: url("../materials/img/metal22.png");
+}
+
+.chessBlock.material .chessInner.block2x2BR {
+  background-color: #003049;
+  background-image: url("../materials/img/metal22.png");
 }
 /*# sourceMappingURL=style.css.map */

@@ -37,7 +37,7 @@ img {
 }
 .unselect {
   .chessInner {
-    opacity: 0.7;
+    opacity: 0.5;
   }
 }
 .hidden {
@@ -153,7 +153,6 @@ nav {
     padding: 0.5rem;
     max-width: 800px;
     line-height: 1.5rem;
-    scrollbar-color: black;
     @media (max-width: 450px) {
       font-size: 0.8rem;
     }
@@ -176,9 +175,46 @@ nav {
     color: $color-chessboard-free;
   }
 }
+
+// Material button setting
+#materialBtn {
+  width: 2rem;
+  height: 4rem;
+  padding: 2px;
+  background-color: $color-chessboard-free;
+  border: $color-chess-2x2 4px solid;
+  border-radius: 0.5rem;
+  position: absolute;
+  top: 5rem;
+  right: 2rem;
+  opacity: 0.8;
+  @media (max-width: 450px) {
+    right: 1rem;
+    width: 1.5rem;
+    height: 3rem;
+    border-radius: 0.3rem;
+    border: $color-chess-2x2 2px solid;
+  }
+  #color {
+    width: 100%;
+    height: 50%;
+    background-color: $color-chess-2x2;
+    opacity: 0.8;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+    &.active {
+      transform: translate(0, 100%);
+    }
+  }
+  img {
+    position: relative;
+    top: 2.5rem;
+  }
+}
+
 // GameArea Setting
 #chessboard {
-  margin: 2rem auto;
+  margin: 2rem 0;
 }
 .chessRow {
   height: $size-chess;
@@ -227,13 +263,10 @@ nav {
   }
 }
 #resetBtn {
-  button {
-    margin: 0.5rem auto;
-    padding: 0.5rem 1rem;
-    img {
-      height: $size-chess;
-    }
-  }
+  margin: 0.5rem auto;
+  padding: 0.5rem 1rem;
+  border-radius: 0.3rem;
+  background-color: $color-chess-2x1;
 }
 
 #floatingBlock {
@@ -286,53 +319,92 @@ nav {
     background-color: $color-chessboard-free;
     background-size: cover;
     &.block1x1 {
-      // background-color: $color-chess-1x1;
-      background-image: $material-11;
+      background-color: $color-chess-1x1;
       border-radius: $chess-radius;
     }
     &.block2x1L {
-      // background-color: $color-chess-2x1;
-      background-image: $material-21;
+      background-color: $color-chess-2x1;
       border-top-left-radius: $chess-radius;
       border-bottom-left-radius: $chess-radius;
     }
     &.block2x1R {
-      // background-color: $color-chess-2x1;
-      background-image: $material-21;
+      background-color: $color-chess-2x1;
       border-top-right-radius: $chess-radius;
       border-bottom-right-radius: $chess-radius;
     }
     &.block1x2T {
-      // background-color: $color-chess-1x2;
-      background-image: $material-12;
+      background-color: $color-chess-1x2;
       border-top-right-radius: $chess-radius;
       border-top-left-radius: $chess-radius;
     }
     &.block1x2B {
-      // background-color: $color-chess-1x2;
-      background-image: $material-12;
+      background-color: $color-chess-1x2;
       border-bottom-left-radius: $chess-radius;
       border-bottom-right-radius: $chess-radius;
     }
     &.block2x2TL {
-      // background-color: $color-chess-2x2;
-      background-image: $material-22;
+      background-color: $color-chess-2x2;
       border-top-left-radius: $chess-radius;
     }
     &.block2x2TR {
-      // background-color: $color-chess-2x2;
-      background-image: $material-22;
+      background-color: $color-chess-2x2;
       border-top-right-radius: $chess-radius;
     }
     &.block2x2BL {
-      // background-color: $color-chess-2x2;
-      background-image: $material-22;
+      background-color: $color-chess-2x2;
       border-bottom-left-radius: $chess-radius;
     }
     &.block2x2BR {
-      // background-color: $color-chess-2x2;
-      background-image: $material-22;
+      background-color: $color-chess-2x2;
       border-bottom-right-radius: $chess-radius;
+    }
+  }
+  &.material {
+    .chessInner {
+      width: 100%;
+      height: 100%;
+      background-color: $color-chessboard-free;
+      background-size: cover;
+      &.block1x1 {
+        background-image: $material-11;
+        border-radius: $chess-radius;
+      }
+      &.block2x1L {
+        background-image: $material-21;
+        border-top-left-radius: $chess-radius;
+        border-bottom-left-radius: $chess-radius;
+      }
+      &.block2x1R {
+        background-image: $material-21;
+        border-top-right-radius: $chess-radius;
+        border-bottom-right-radius: $chess-radius;
+      }
+      &.block1x2T {
+        background-image: $material-12;
+        border-top-right-radius: $chess-radius;
+        border-top-left-radius: $chess-radius;
+      }
+      &.block1x2B {
+        background-image: $material-12;
+        border-bottom-left-radius: $chess-radius;
+        border-bottom-right-radius: $chess-radius;
+      }
+      &.block2x2TL {
+        background-color: $color-chess-2x2;
+        background-image: $material-22;
+      }
+      &.block2x2TR {
+        background-color: $color-chess-2x2;
+        background-image: $material-22;
+      }
+      &.block2x2BL {
+        background-color: $color-chess-2x2;
+        background-image: $material-22;
+      }
+      &.block2x2BR {
+        background-color: $color-chess-2x2;
+        background-image: $material-22;
+      }
     }
   }
 }
