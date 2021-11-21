@@ -38,13 +38,21 @@ let chessboardStart = [
 0.121~0.124 -> 1x2-block,
 0.22 -> 2x2-block,
 */
-let currentChessboard = chessboardStart;
+let currentChessboard;
+if (localStorage.getItem("chessboard")) {
+  currentChessboard = jsonToChessboard(localStorage.getItem("chessboard"));
+} else {
+  currentChessboard = chessboardStart;
+}
+let currentLocation = indexOf2D(currentChessboard, 0.111);
 let stepCounter = 0;
+if (localStorage.getItem("steps")) {
+  stepCounter = Number(localStorage.getItem("steps"));
+}
 // Get elements from html
 let chesses = document.querySelectorAll(".chessBlock");
 
 // Set current location
-let currentLocation = [4, 0];
 
 // Show chesses
 printChessboard(currentChessboard);
@@ -62,10 +70,6 @@ let btnArray = [
 let directionArray = ["right", "left", "bottom", "top"];
 for (let i = 0; i < btnArray.length; i++) {
   btnArray[i].addEventListener("click", () => {
-    moving(directionArray[i]);
-  });
-  btnArray[i].addEventListener("touchstart", (target) => {
-    target.preventDefault();
     moving(directionArray[i]);
   });
 }
@@ -90,21 +94,32 @@ window.addEventListener("keydown", (target) => {
 let resetBtn = document.querySelector("#resetBtn");
 "click touchstart".split(" ").forEach((e) => {
   resetBtn.addEventListener(e, () => {
-    let typing = prompt("Type RELOAD to reload");
-    if (typing == "RELOAD") {
+    if (confirm("Sure to start a new game?")) {
+      localStorage.removeItem("chessboard");
+      localStorage.removeItem("steps");
       location.reload();
+    } else {
     }
   });
 });
 
-// Chess moved
-let chessMoved = document.querySelector("#chessMoved");
+// Material setting
+let materialBtn = document.querySelector("#materialBtn");
+"click touchstart".split(" ").forEach((e) => {
+  materialBtn.addEventListener(e, () => {
+    materialBtn.children[0].classList.toggle("active");
+    chesses.forEach((e) => {
+      e.classList.toggle("material");
+    });
+  });
+});
 
 // functions ---------------------------
 // Print chessboard
 function printChessboard(currentChessboard) {
   let chessY;
   let chessX;
+  let chessMoved = document.querySelector("#chessMoved");
   // Let count for css print
   let [count121, count122, count123, count124, count21, count22] = [
     1, 1, 1, 1, 1, 1,
@@ -217,6 +232,8 @@ function printChessboard(currentChessboard) {
   if (stepCounter >= 1) {
     chessMoved.innerHTML = `You have moved ${stepCounter} steps.`;
   }
+  localStorage.setItem("chessboard", currentChessboard);
+  localStorage.setItem("currentLocation", currentLocation);
 }
 
 // Detect the type of block
@@ -575,6 +592,8 @@ function moving(direction) {
       }
       break;
   }
+  // Record steps
+  localStorage.setItem("steps", stepCounter);
   printChessboard(currentChessboard);
   victory(currentChessboard);
 }
@@ -633,4 +652,28 @@ function victory(currentChessboard) {
       `CONGRATULATIONS!!! You win the game and you use ${stepCounter} steps;`
     );
   }
+}
+// Turn json to chessboard
+function jsonToChessboard(jsonString) {
+  let jsonData = jsonString.split(",");
+  let k = 0;
+  let chessboardArray = [];
+  for (let j = 0; j < 5; j++) {
+    let jArray = [];
+    for (let i = 0; i < 4; i++) {
+      jArray.push(Number(jsonData[k]));
+      k++;
+    }
+    chessboardArray.push(jArray);
+  }
+  return chessboardArray;
+}
+// Index in 2D-array
+function indexOf2D(array, target) {
+  for (let i = 0; i < array.length; i++) {
+    if (array[i].indexOf(target) > 0) {
+      return [i, array[i].indexOf(target)];
+    }
+  }
+  return -1;
 }
