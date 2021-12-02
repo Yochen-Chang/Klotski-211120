@@ -39,7 +39,7 @@ let chessboardStart = [
 0.22 -> 2x2-block,
 */
 let currentChessboard;
-if (localStorage.getItem("chessboard")) {
+if (localStorage.getItem("chessboard") & (localStorage.getItem("chessboard") != -1)) {
   currentChessboard = jsonToChessboard(localStorage.getItem("chessboard"));
 } else {
   currentChessboard = chessboardStart;
